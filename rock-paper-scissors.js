@@ -4,26 +4,29 @@ function getTextChoice(number){
 
     switch( number ){
         case 1:
-            Choice = 'rock';
+            choice = 'rock';
             break;
         case 2:
-            Choice = 'paper';
+            choice = 'paper';
             break;
         case 3:
-            Choice = 'scissors';
+            choice = 'scissors';
+            break;
+        default:
+            choice = 'scissors';
             break;
     }
 
-    return Choice;
+    return choice;
 }
 
 // Returns a random choice between "rock", "paper" and "scissors"
 function getComputerChoice(){
     
     let randomNumber = Math.floor((Math.random() * 100)) % 3 + 1;
-    let gameChoice = getTextChoice(randomNumber);
+    let computerChoice = getTextChoice(randomNumber);
 
-    return gameChoice;
+    return computerChoice;
 }
 
 //Returns the choice of the human player
@@ -51,6 +54,45 @@ function getHumanChoice(){
     return humanChoice;
 }
 
+let humanScore = 0;
+let ComputerScore = 0;
 
+function playRound(humanChoice, computerChoice){
 
-console.log(getHumanChoice());
+    let humanWin = false;
+
+    if( humanChoice === computerChoice ){
+        console.log('It\'s a tie! You both chose ' + humanChoice + '!');
+        humanScore++;
+        ComputerScore++;
+    }
+    else{
+        switch( humanChoice ){
+            case 'rock':
+                if( computerChoice == 'scissors') humanWin = true;
+                break;
+            case 'paper':
+                if( computerChoice == 'rock') humanWin = true;
+                break;
+            case 'scissors':
+                if( computerChoice == 'paper') humanWin = true;
+                break;
+        }
+
+        if( humanWin ){
+            console.log('You win! ' + humanChoice + ' beats ' + computerChoice);
+            humanScore++;
+        }
+        else{
+            console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
+            ComputerScore++;
+        }
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+//console.log(humanSelection + ' vs ' + computerSelection);
+
+playRound( humanSelection, computerSelection);
