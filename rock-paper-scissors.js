@@ -61,7 +61,7 @@ function getHumanChoice(){
 function playGame(){
 
     let humanScore = 0;
-    let ComputerScore = 0;
+    let computerScore = 0;
 
     function playRound(humanChoice, computerChoice){
 
@@ -70,7 +70,7 @@ function playGame(){
         if( humanChoice === computerChoice ){
             console.log('It\'s a tie! You both chose ' + humanChoice + '!');
             humanScore++;
-            ComputerScore++;
+            computerScore++;
         }
         else{
             switch( humanChoice ){
@@ -91,18 +91,18 @@ function playGame(){
             }
             else{
                 console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
-                ComputerScore++;
+                computerScore++;
             }
         }
     }
 
     for(i = 0; i < 5; i++){
         playRound(getHumanChoice(), getComputerChoice());
-        console.log(' You: ' + humanScore + ', Computer: ' + ComputerScore);
+        console.log(' You: ' + humanScore + ', Computer: ' + computerScore);
     }
 
-    if( humanScore > ComputerScore ) console.log(' You won the game!');
-    else if( humanScore < ComputerScore ) console.log(' You lost the game!');
+    if( humanScore > computerScore ) console.log(' You won the game!');
+    else if( humanScore < computerScore ) console.log(' You lost the game!');
     else console.log('Tied game!');
 }
 
