@@ -96,10 +96,24 @@ function playGame(){
         }
     }
 
-    for(i = 0; i < 5; i++){
-        playRound(getHumanChoice(), getComputerChoice());
-        console.log(' You: ' + humanScore + ', Computer: ' + computerScore);
-    }
+    let rockButton = document.createElement('button');
+    let paperButton = document.createElement('button');
+    let scissorsButton = document.createElement('button');
+
+    rockButton.value = 'rock';
+    paperButton.value = 'paper';
+    scissorsButton.value = 'scissors';
+
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach((button) => {
+        // and for each one we add a 'click' listener
+        button.addEventListener("click", () => {
+            playRound(button.value, getComputerChoice());
+        });
+      });
+
+    console.log(' You: ' + humanScore + ', Computer: ' + computerScore);
 
     if( humanScore > computerScore ) console.log(' You won the game!');
     else if( humanScore < computerScore ) console.log(' You lost the game!');
