@@ -9,6 +9,8 @@
 .score-container, .buttons-container {
     display: flex;
     justify-content: space-around;
+    column-gap: 40px;
+    padding: 40px;
 }
 
 .single-score {

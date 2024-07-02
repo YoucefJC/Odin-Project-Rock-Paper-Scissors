@@ -63,25 +63,32 @@ function playGame(){
     let humanScore = 0;
     let computerScore = 0;
 
-    displayRoundResult(result){
-
+    function displayRoundResult(result){
+        let roundResult = document.querySelector('.round-result');
+        roundResult.textContent = result;
     }
 
-    displayGameResult(result){
-
+    function displayGameResult(result){
+        let roundResult = document.querySelector('#winner-container');
+        roundResult.textContent = result;
     }
 
-    displayScore(humanScore, computerScore){
-        
+    function displayScore(humanScore, computerScore){
+        let humanScoreContainer = document.querySelector('#human-score');
+        let computerScoreContainer = document.querySelector('#computer-score');
+        humanScoreContainer.innerText = humanScore;
+        computerScoreContainer.innerText = computerScore;
     }
 
     function playRound(humanChoice, computerChoice){
 
         let humanWin = false;
+
+        displayRoundResult(humanChoice + ' vs ' + computerChoice);
     
         if( humanChoice === computerChoice ){
             
-            displayRoundResult('tie');
+            //displayRoundResult('It\'s a tie!');
             humanScore++;
             computerScore++;
         }
@@ -99,11 +106,11 @@ function playGame(){
             }
     
             if( humanWin ){
-                displayRoundResult('win');
+                //displayRoundResult('You win the round!');
                 humanScore++;
             }
             else{
-                displayRoundResult('loss');
+                //displayRoundResult('You lost the round!');
                 computerScore++;
             }
         }
@@ -114,24 +121,38 @@ function playGame(){
     let scissorsButton = document.createElement('button');
 
     rockButton.value = 'rock';
+    rockButton.innerText = 'Rock';
+
     paperButton.value = 'paper';
+    paperButton.innerText = 'Paper';
+
     scissorsButton.value = 'scissors';
+    scissorsButton.innerText = 'Scissors';
+
+    let buttonContainer = document.querySelector('.buttons-container');
+    buttonContainer.appendChild(rockButton);
+    buttonContainer.appendChild(paperButton);
+    buttonContainer.appendChild(scissorsButton);
 
     const buttons = document.querySelectorAll("button");
 
     buttons.forEach((button) => {
-        // and for each one we add a 'click' listener
+    // and for each one we add a 'click' listener
         button.addEventListener("click", () => {
             playRound(button.value, getComputerChoice());
+            displayScore(humanScore, computerScore);
+
+            if( Math.max(humanScore, computerScore) >= 5 ){
+                if( humanScore > computerScore ) displayGameResult('You won the game!');
+                else if( humanScore < computerScore ) displayGameResult('You lost the game!');
+                else displayGameResult('Tied game!');
+
+                buttons.forEach((button) => { button.disabled = true;});
+            }
         });
-      });
+    });
 
-    displayScore(humanScore, computerScore);
-
-
-    if( humanScore > computerScore ) displayGameResult('win');
-    else if( humanScore < computerScore ) displayGameResult('loss');
-    else displayGameResult('tie');;
+    if( Math.max(humanScore, computerScore) >= 5 ) return 0;
 }
 
 playGame();

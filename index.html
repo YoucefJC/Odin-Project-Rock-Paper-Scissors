@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script src="rock-paper-scissors.js"></script>
+    <script src="rock-paper-scissors.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     
 </head>
 <body>
     <div class="content">
         <div class="buttons-container"></div>
+        <div class="round-result"></div>
         <div class="score-container">
             <div class="single-score">
                 <span>Your score</span>
-                <span class="score-value" id="human-score"></span>
+                <span class="score-value" id="human-score">0</span>
             </div>
             <span>VS</span>
             <div class="single-score">
                 <span>Computer score</span>
-                <span class="score-value" id="computer-score"></span>
+                <span class="score-value" id="computer-score">0</span>
             </div>
         </div>
         <div id="winner-container"></div>
