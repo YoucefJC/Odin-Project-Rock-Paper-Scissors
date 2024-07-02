@@ -1,3 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
     <script src="rock-paper-scissors.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    
 </head>
+<body>
+    <div class="content">
+        <div class="buttons-container"></div>
+        <div class="score-container">
+            <div class="single-score">
+                <span>Your score</span>
+                <span class="score-value" id="human-score"></span>
+            </div>
+            <span>VS</span>
+            <div class="single-score">
+                <span>Computer score</span>
+                <span class="score-value" id="computer-score"></span>
+            </div>
+        </div>
+        <div id="winner-container"></div>
+    </div>
+</body>
+</html>

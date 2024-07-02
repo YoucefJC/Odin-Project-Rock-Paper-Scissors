@@ -63,12 +63,25 @@ function playGame(){
     let humanScore = 0;
     let computerScore = 0;
 
+    displayRoundResult(result){
+
+    }
+
+    displayGameResult(result){
+
+    }
+
+    displayScore(humanScore, computerScore){
+        
+    }
+
     function playRound(humanChoice, computerChoice){
 
         let humanWin = false;
     
         if( humanChoice === computerChoice ){
-            console.log('It\'s a tie! You both chose ' + humanChoice + '!');
+            
+            displayRoundResult('tie');
             humanScore++;
             computerScore++;
         }
@@ -86,11 +99,11 @@ function playGame(){
             }
     
             if( humanWin ){
-                console.log('You win! ' + humanChoice + ' beats ' + computerChoice);
+                displayRoundResult('win');
                 humanScore++;
             }
             else{
-                console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
+                displayRoundResult('loss');
                 computerScore++;
             }
         }
@@ -113,11 +126,12 @@ function playGame(){
         });
       });
 
-    console.log(' You: ' + humanScore + ', Computer: ' + computerScore);
+    displayScore(humanScore, computerScore);
 
-    if( humanScore > computerScore ) console.log(' You won the game!');
-    else if( humanScore < computerScore ) console.log(' You lost the game!');
-    else console.log('Tied game!');
+
+    if( humanScore > computerScore ) displayGameResult('win');
+    else if( humanScore < computerScore ) displayGameResult('loss');
+    else displayGameResult('tie');;
 }
 
 playGame();
